@@ -17,7 +17,7 @@ function naziv_sajta($naziv) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php naziv_sajta('cool site'); ?></title>
+    <title><?php naziv_sajta(''); ?></title>
 </head>
 <body>
     <?php 
