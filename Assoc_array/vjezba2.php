@@ -68,9 +68,9 @@ if (array_key_exists('Jelena', $osobe)) {
 
 print_r($prezimena = array_column($osobe, 'prezime')); // Vjezba
 echo "<hr>";
-print_r($hobiji = array_column($osobe, 'hobiji')); // Vjezba
+print_r($hobiji = array_column($osobe, 'hobiji'));
 echo "<hr>";
-print_r($godine = array_column($osobe, 'godiste')); // Vjezba
+print_r($godine = array_column($osobe, 'godiste')); 
 echo "<hr>";
 
 
