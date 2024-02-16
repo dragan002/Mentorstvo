@@ -33,4 +33,4 @@ function pairUnpair($number) {
     }
 }
 
-echo pairUnpair(0);
+echo pairUnpair(3);
