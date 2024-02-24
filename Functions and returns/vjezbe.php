@@ -16,3 +16,8 @@ echo "<br>";
 echo "<br>";
 
 echo discountForEachElement(250,330,1000,2000,5000);
+
+echo "<hr>Exercise 4 -Tax<br>";
+echo tax(2020, 3000);
+echo "<hr>Exercise 4 -Tax<br>";
+echo calculateTax("ls", "100");
