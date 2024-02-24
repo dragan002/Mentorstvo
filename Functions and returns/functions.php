@@ -26,9 +26,33 @@ function calculateDiscountPrice($total, $discount) {
         if(!is_numeric($total)  || !is_numeric($discount)){
             throw new InvalidArgumentException("Both total and discount should be numbers");
         }
-        $priceWithDiscount = ($total / 100) * $discount;
-        return $priceWithDiscount;
+        return ($total / 100) * $discount;
     } catch(InvalidArgumentException $e){
         echo 'Error: ',  $e->getMessage(), "\n";
     }
 }
+
+// Exercise 3
+function discountForEachElement(...$array) {
+    $discounts = [];
+
+    foreach ($array as $number) {
+        if (!is_numeric($number)) {
+            die('Array can only contain numbers.');
+        }
+
+        $discount = ($number / 100) * 10;
+        $formattedNumber = number_format($number, 2);
+        $formattedDiscount = number_format($discount, 2);
+        $discounts[] = "Typed price is: \${$formattedNumber} - Discount is: \${$formattedDiscount}";
+    }
+
+    $resultString = implode('<br>', $discounts);
+    $totalDiscount = array_sum($array) * 0.1;
+    $totalDiscountFormatted = number_format($totalDiscount, 2);
+
+    return "Discounts for each number typed in the array (10%): <br>{$resultString}.<br>Total discount: \${$totalDiscountFormatted}";
+}
+
+
+

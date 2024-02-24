@@ -12,3 +12,7 @@ echo "Vjezba 2";
 echo "<br>";
 
 echo calculateDiscountPrice(1500, 10);
+echo "<br>";
+echo "<br>";
+
+echo discountForEachElement(250,330,1000,2000,5000);
