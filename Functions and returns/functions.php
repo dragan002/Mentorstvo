@@ -92,9 +92,38 @@ function calculateTax($year, $income) {
             break;
         }
         
-    $taxText = "Total amount on the $$income income is: ";
+    $taxText = "Total tax on the $$income income is: ";
     $totalTax = $income + ($income * $taxRate);
 
     return $taxText . "$" . $totalTax;
 }
 
+// HomeWork Functions and returns 
+
+function countOrder($price, $city) {
+    $order = [
+            //city     //distance
+        'Subotica' => 220,
+        'Pancevo' => 10,
+        'Sarajevo' => 292,
+        'Split' => 799
+    ];
+    
+    if (!array_key_exists($city, $order)) {
+        echo "The city you entered does not exist!";
+    } else {
+        $distance = $order[$city];
+
+        if($distance < 100) {
+            $price = 100;
+            return "Distance between Belgrade - " . $city . " is " . $distance . ". Delivery costs is " .$price; 
+        }  else if ($distance >= 100 && $distance <=200) {
+            $price = 200;
+            return "Distance between Belgrade - " . $city . " is " . $distance . ". Delivery costs is " .$price;
+        } else {
+            $price = 550;
+            return "Distance between Belgrade - " . $city . " is " . $distance . ". Delivery costs is " . $price;
+        }
+    }
+
+}

@@ -20,4 +20,18 @@ echo discountForEachElement(250,330,1000,2000,5000);
 echo "<hr>Exercise 4 -Tax<br>";
 echo tax(2020, 3000);
 echo "<hr>Exercise 4 -Tax<br>";
-echo calculateTax("ls", "100");
+echo calculateTax(1999, 10000) . "<br>";
+
+
+$places = [
+    'Subotica' => 220,
+    'Pancevo' => 10,
+    'Sarajevo' => 292,
+    'Split' => 799
+];
+
+
+foreach( $places as $city=>$distance ) {
+   echo  $city . $distance;
+}
+echo countOrder(2000, 'Split');
