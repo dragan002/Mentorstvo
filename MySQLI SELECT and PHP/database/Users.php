@@ -11,7 +11,7 @@ class Users extends Database{
         
             if($result !==  false) {
                 $data = $result->rowCount();
-                echo sprintf('Ukupan broj korisnika: %d', $data);
+                return sprintf('Ukupan broj korisnika: %d', $data);
             } else {
                 echo "Query failed";
             }
@@ -27,8 +27,8 @@ class Users extends Database{
             $result = $this->conn->query("SELECT * FROM " . self::TABLE_NAME);
 
             if($result !== false) {
-                $datas = $result->fetchAll(PDO::FETCH_ASSOC);
-                return $datas;
+                $data = $result->fetchAll(PDO::FETCH_ASSOC);
+                return $data;
             } else {
                 echo "Queary failed: can't fetch all";
             }
