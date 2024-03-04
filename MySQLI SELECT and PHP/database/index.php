@@ -14,7 +14,7 @@ $allUsers = new Users();
 print_r($allUsers->getAllData());;
 echo "<hr>";
 
-$product = new Product();
+$product = new Product($conn);
 $listOfProducts = $product->getAllProduct();
 var_dump($listOfProducts);
 
