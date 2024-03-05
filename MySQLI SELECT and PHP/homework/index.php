@@ -1,6 +1,9 @@
 <?php
-    include 'classes/Registration.php'
+    include 'classes/Users.php';
+    include 'classes/Registration.php';
+   
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
