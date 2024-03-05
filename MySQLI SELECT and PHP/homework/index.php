@@ -17,7 +17,7 @@
             <div class="card">
                 <div class="card-header">Register</div>
                 <div class="card-body">
-                    <form method="post" action="classes/Register.php">
+                    <form method="post" action="classes/Registration.php">
                         <div class="form-group">
                             <label for="email">Email</label>
                             <input type="email" class="form-control" id="email" name="email" required>

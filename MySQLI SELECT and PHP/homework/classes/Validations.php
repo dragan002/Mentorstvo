@@ -1,13 +1,6 @@
 <?php
 
 class Validation {
-    function usernameValidation($username) {
-        $errors = [];
-        if (empty($username) || !preg_match('/^[a-zA-Z0-9_]{5,20}$/', $username)) {
-            $errors['username'] = 'Invalid username. It should be 5-20 characters long and contain only letters, numbers, and underscores.';
-        }
-        return $errors;
-    }
     
     function emailValidation($email) {
         $errors = [];

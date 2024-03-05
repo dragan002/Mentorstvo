@@ -37,7 +37,7 @@ class Users extends Database{
         }
     }
 
-    public function CreateUser($user) {
+    public function insertUser($user) {
         try {
             $this->conn = $this->getConnection();
             
