@@ -1,7 +1,16 @@
 <?php
     include 'classes/Users.php';
     include 'classes/Registration.php';
-   
+    
+    // if(!isset($_POST['submit'])) {
+    //     die('There is an error with submiting form');
+    // }
+
+    // if()
+    // $user = new Users();
+    // $user->createUser('draganvujic23339@gmail.com', 'BosnianBedzer');
+    $user = new Registration();
+   $user->registerUser();
 ?>
 
 <!DOCTYPE html>
@@ -20,7 +29,7 @@
             <div class="card">
                 <div class="card-header">Register</div>
                 <div class="card-body">
-                    <form method="post" action="classes/Registration.php">
+                    <form method="post" action="">
                         <div class="form-group">
                             <label for="email">Email</label>
                             <input type="email" class="form-control" id="email" name="email" required>
@@ -33,7 +42,7 @@
                             <label for="confirmPassword">Confirm Password</label>
                             <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" required>
                         </div>
-                        <button type="submit" class="btn btn-primary">Register</button>
+                        <button type="submit" name="register" class="btn btn-primary">Register</button>
                     </form>
                 </div>
             </div>
