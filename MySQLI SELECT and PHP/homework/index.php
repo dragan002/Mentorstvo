@@ -1,16 +1,9 @@
 <?php
-    include 'classes/Users.php';
     include 'classes/Registration.php';
-    
-    // if(!isset($_POST['submit'])) {
-    //     die('There is an error with submiting form');
-    // }
 
-    // if()
-    // $user = new Users();
-    // $user->createUser('draganvujic23339@gmail.com', 'BosnianBedzer');
     $user = new Registration();
-   $user->registerUser();
+    $user->registerUser();
+
 ?>
 
 <!DOCTYPE html>

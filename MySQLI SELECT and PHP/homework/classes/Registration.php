@@ -1,7 +1,6 @@
 <?php
 
 require_once('../database/Database.php');
-require_once('Users.php');
 
 
 class Registration extends Database {
@@ -49,7 +48,7 @@ class Registration extends Database {
             } else {
                 $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
                 $this->createUser($email, $hashedPassword);
-                header("Location: ../index.php");
+                header("Location: ../homework/index.php");
                 exit(); 
             }
         }
@@ -69,6 +68,7 @@ class Registration extends Database {
         if (!$result) {
             die("Error with inserting data");
         } else {
+            $_SESSION['registration_success'] = true;
             return true;
         }
     }
