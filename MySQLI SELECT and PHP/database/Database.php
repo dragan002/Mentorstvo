@@ -13,7 +13,6 @@ class Database {
             die("DATABASE FAILED: " . $e->getMessage());
         }
     }
-
     public function getConnection() {
         return $this->conn;
     }

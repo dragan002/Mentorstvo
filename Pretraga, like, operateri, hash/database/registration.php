@@ -4,21 +4,31 @@ require_once('Database.php');
 $database = new Database();
 $conn = $database->getConnection(); 
 
-if(!isset($_POST['email']) && empty($_POST['email'])) {
-    die("YOu don't send email");
-}
-
-if(!isset($_POST['password']) && empty($_POST['password'])) {
-    die("YOu dont send password");
-}
-
-$email = $_POST['email'];
-$password = password_hash($_POST['password'], PASSWORD_BCRYPT);
+$email = isset($_POST['email']) ? $_POST['email'] : '';
+$password = isset($_POST['password']) ? $_POST['password'] : '';
 
 class Registration extends Database{
-    
+
     public function createUser($email, $password) {
-        $sql = "INSERT INTO `korisnici` (`email`, `sifra`) VALUES ($email, $password)";
+        try {
+
+            if($this->checkIfEmailExist($email)) {
+                throw new Exception("This email is already in use.");
+            }
+
+            $sql = "INSERT INTO `korisnici` (`email`, `sifra`) VALUES(:email, :password)";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+            $stmt->bindParam(':password', $password, PDO::PARAM_STR);
+            $result = $stmt->execute();
+
+            if(!$result) {
+                throw new Exception("Query  failed.");
+             }
+             return true;
+         } catch (Exception $ex) {
+             echo ("Error: " . $ex->getMessage());
+        }
     }
 
     public function checkIfEmailExist( $email ) {
@@ -31,11 +41,8 @@ class Registration extends Database{
             $stmt->bindParam(":email", $email, PDO::PARAM_STR);
             $stmt->execute();
             
-            if ($stmt->rowCount() > 0) {
-                throw new Exception("Email already Exist in database");
-            }
+            return $stmt->rowCount() > 0;
 
-            return $result = $stmt->execute();
         } catch (Exception $e) {
             echo "Error: " . $e->getMessage();
         }

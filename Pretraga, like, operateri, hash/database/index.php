@@ -2,10 +2,13 @@
 
 require_once('registration.php');
 
-$registration = new Registration();
-echo $registration->checkIfEmailExist($email);
-$registration->createUser($email, $password);
-var_dump($email);
+if(!empty($email) && !empty($password)) {
+    $registration = new Registration();
+    $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
+    $registration->createUser($email, $hashedPassword);
+} else {
+    echo "Provide email and password";
+}
 ?>
 
 <!DOCTYPE html>
