@@ -7,11 +7,15 @@ $conn = $database->getConnection();
 $email = isset($_POST['email']) ? $_POST['email'] : '';
 $password = isset($_POST['password']) ? $_POST['password'] : '';
 
-class Registration extends Database{
+class Registration {
+    protected $conn;
 
+    public function __construct($conn)
+    {
+        $this->conn = $conn;
+    }
     public function createUser($email, $password) {
         try {
-
             if($this->checkIfEmailExist($email)) {
                 throw new Exception("This email is already in use.");
             }
@@ -31,9 +35,9 @@ class Registration extends Database{
         }
     }
 
-    public function checkIfEmailExist( $email ) {
+    public function checkIfEmailExist($email) {
         try {
-            $this->conn = $this->getConnection();
+            // $this->conn = $this->getConnection();
 
             $sql = "SELECT * FROM `korisnici` WHERE `email` = :email";
 

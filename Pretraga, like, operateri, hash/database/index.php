@@ -1,14 +1,20 @@
 <?php
 
-require_once('registration.php');
+require_once('Registration.php');
+require_once('Users.php');
+
 
 if(!empty($email) && !empty($password)) {
-    $registration = new Registration();
+    $registration = new Registration($conn);
     $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
     $registration->createUser($email, $hashedPassword);
 } else {
     echo "Provide email and password";
 }
+
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -40,6 +46,19 @@ if(!empty($email) && !empty($password)) {
                     </form>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <div class="row justify-content-center mt-3">
+        <div class="col-md-6">
+            <form method="get" action="Users.php">
+                <div class="input-group">
+                    <input type="text" class="form-control" name="search" placeholder="Search...">
+                    <div class="input-group-append">
+                        <button type="submit" class="btn btn-outline-secondary">Search</button>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 </div>
