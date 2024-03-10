@@ -8,7 +8,6 @@ class Users {
         $this->conn = $conn;
     }
 
-
     public function createUser($email, $password) {
         try {
             if($this->checkIfEmailExist($email)) {

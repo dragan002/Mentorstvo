@@ -32,4 +32,30 @@ class Product {
             die( "Error : " . $e->getMessage() );
         }
     }
+
+    public function searchProduct($searchedWord) {
+        try {
+
+            $sql = "SELECT * FROM `proizvodi` WHERE `ime` LIKE :name AND `opis` LIKE :description";
+
+            $stmt = $this->conn->prepare($sql);
+
+            $name = "%" . $searchedWord . "%";
+            $description = "%" . $searchedWord . "%";
+
+            $stmt->bindParam(':name', $name, PDO::PARAM_STR);
+            $stmt->bindParam(':description', $description, PDO::PARAM_STR);
+            $stmt->execute();
+
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            $foundsWord = [];
+            foreach ($result as $value) { array_push($foundsWord, $value);}
+
+            return $foundsWord;
+        
+        } catch (PDOException $e) {
+            echo 'Error: ' + $e->getMessage();
+         }
+    }
 }

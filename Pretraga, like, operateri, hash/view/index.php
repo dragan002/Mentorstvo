@@ -36,6 +36,20 @@
   </div>
 </nav>
 
+<div class="row justify-content-center mt-3">
+        <div class="col-md-6">
+          <h3>Search products</h3>
+            <form method="get" action="../control/productControl/productControl.php">
+                <div class="input-group">
+                    <input type="text" class="form-control" name="search" placeholder="Search...">
+                    <div class="input-group-append">
+                        <button type="submit" class="btn btn-outline-secondary">Search</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
 <!-- Your page content goes here -->
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-ea0Hw7YpoqWMF8At5Q8br5shdWaPFeBDhjP+2ZbDI5E8I6z9nY4i/JQb8Wp+WJtw" crossorigin="anonymous"></script>

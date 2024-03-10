@@ -16,3 +16,11 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
     $product = new Product($conn);
     $newProduct = $product->addProduct($name, $description, $price, $image, $quantity);
 }
+
+if($_SERVER['REQUEST_METHOD'] == 'GET') {
+    $typedWord = $_GET['search'];
+
+    $search = new Product($conn);
+    $results = $search->searchProduct($typedWord);
+    var_dump($results);
+}
