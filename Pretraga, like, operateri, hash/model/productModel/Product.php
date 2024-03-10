@@ -27,16 +27,14 @@ class Product {
                 throw new Exception("Error while adding product" . $stmt->error());
             }
             
-            return true;
+            return $result;
         } catch (Exception $e) {
             die( "Error : " . $e->getMessage() );
         }
     }
-
     public function searchProduct($searchedWord) {
         try {
-
-            $sql = "SELECT * FROM `proizvodi` WHERE `ime` LIKE :name AND `opis` LIKE :description";
+            $sql = "SELECT * FROM `proizvodi` WHERE `ime` LIKE :name OR `opis` LIKE :description";
 
             $stmt = $this->conn->prepare($sql);
 
@@ -49,11 +47,8 @@ class Product {
 
             $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-            $foundsWord = [];
-            foreach ($result as $value) { array_push($foundsWord, $value);}
+            return $result;
 
-            return $foundsWord;
-        
         } catch (PDOException $e) {
             echo 'Error: ' + $e->getMessage();
          }

@@ -42,8 +42,9 @@ if($_SERVER['REQUEST_METHOD'] == "GET") {
     
             $count = 1;
     
-            foreach ($foundWordsInEmail as $wordCount => $value) {
-                echo "<h3>$count $value</h3>";
+            foreach ($foundWordsInEmail as $wordCount => $value) { ?>
+                <h3><?php echo $count. " " . $value ?></h3>
+                <?php
                 $count++;
             }
     }
