@@ -1,7 +1,7 @@
 <?php
 
-require_once('Registration.php');
-require_once('Users.php');
+require_once('../control/Registration.php');
+require_once('../control/Users.php');
 
 
 if(!empty($email) && !empty($password)) {
@@ -51,7 +51,7 @@ if(!empty($email) && !empty($password)) {
 
     <div class="row justify-content-center mt-3">
         <div class="col-md-6">
-            <form method="get" action="Users.php">
+            <form method="get" action="../control/Users.php">
                 <div class="input-group">
                     <input type="text" class="form-control" name="search" placeholder="Search...">
                     <div class="input-group-append">

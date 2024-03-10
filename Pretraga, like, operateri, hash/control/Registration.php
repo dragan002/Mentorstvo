@@ -1,5 +1,5 @@
 <?php
-require_once('Database.php');
+require_once('../model/database/Database.php');
 
 $database = new Database();
 $conn = $database->getConnection(); 
@@ -37,8 +37,6 @@ class Registration {
 
     public function checkIfEmailExist($email) {
         try {
-            // $this->conn = $this->getConnection();
-
             $sql = "SELECT * FROM `korisnici` WHERE `email` = :email";
 
             $stmt = $this->conn->prepare($sql);
