@@ -10,26 +10,26 @@
 
 <div class="container mt-5">
   <h2>Add New Product</h2>
-  <form>
+  <form method="post" action="../control/productControl/productControl.php">
     <div class="mb-3">
       <label for="productName" class="form-label">Product Name</label>
-      <input type="text" class="form-control" id="productName" name="productName" required>
+      <input type="text" class="form-control" id="productName" name="productName" >
     </div>
     <div class="mb-3">
       <label for="productDescription" class="form-label">Product Description</label>
-      <textarea class="form-control" id="productDescription" name="productDescription" rows="3" required></textarea>
+      <textarea class="form-control" id="productDescription" name="productDescription" rows="3" ></textarea>
     </div>
     <div class="mb-3">
       <label for="productPrice" class="form-label">Product Price</label>
-      <input type="number" class="form-control" id="productPrice" name="productPrice" min="0" step="0.01" required>
+      <input type="number" class="form-control" id="productPrice" name="productPrice" min="0" step="0.01" >
     </div>
     <div class="mb-3">
       <label for="productImage" class="form-label">Product Image</label>
-      <input type="file" class="form-control" id="productImage" name="productImage" accept="image/*" required>
+      <input type="file" class="form-control" id="productImage" name="productImage" accept="image/*" >
     </div>
     <div class="mb-3">
       <label for="productQuantity" class="form-label">Product Quantity</label>
-      <input type="number" class="form-control" id="productQuantity" name="productQuantity" min="0" required>
+      <input type="number" class="form-control" id="productQuantity" name="productQuantity" min="0" >
     </div>
     <button type="submit" class="btn btn-primary">Add Product</button>
   </form>
