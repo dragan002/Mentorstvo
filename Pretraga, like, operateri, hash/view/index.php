@@ -1,74 +1,43 @@
-<?php
-
-require_once('../control/Registration.php');
-require_once('../control/Users.php');
-
-
-if(!empty($email) && !empty($password)) {
-    $registration = new Registration($conn);
-    $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
-    $registration->createUser($email, $hashedPassword);
-} else {
-    echo "Provide email and password";
-}
-
-
-
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Bootstrap Registration Form</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+  <title>Your Website</title>
 </head>
 <body>
 
-<div class="container mt-5">
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-header">Register</div>
-                <div class="card-body">
-                    <form method="post" action="">
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" class="form-control" id="email" name="email" >
-                        </div>
-                        <div class="form-group">
-                            <label for="password">Password</label>
-                            <input type="password" class="form-control" id="password" name="password" >
-                        </div>
-                        <button type="submit" name="register" class="btn btn-primary">Register</button>
-                    </form>
-                </div>
-            </div>
-        </div>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Your Website</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Contact</a>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn-primary mx-2" href="registration.php">Register</a>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn-success" href="product.php">Add Product</a>
+        </li>
+      </ul>
     </div>
+  </div>
+</nav>
 
-    <div class="row justify-content-center mt-3">
-        <div class="col-md-6">
-            <form method="get" action="../control/Users.php">
-                <div class="input-group">
-                    <input type="text" class="form-control" name="search" placeholder="Search...">
-                    <div class="input-group-append">
-                        <button type="submit" class="btn btn-outline-secondary">Search</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
+<!-- Your page content goes here -->
 
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-ea0Hw7YpoqWMF8At5Q8br5shdWaPFeBDhjP+2ZbDI5E8I6z9nY4i/JQb8Wp+WJtw" crossorigin="anonymous"></script>
 </body>
 </html>
-
-
-

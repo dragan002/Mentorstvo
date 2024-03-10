@@ -1,19 +1,14 @@
 <?php
-require_once('../model/database/Database.php');
 
-$database = new Database();
-$conn = $database->getConnection(); 
-
-$email = isset($_POST['email']) ? $_POST['email'] : '';
-$password = isset($_POST['password']) ? $_POST['password'] : '';
-
-class Registration {
+class Users {
     protected $conn;
 
     public function __construct($conn)
     {
         $this->conn = $conn;
     }
+
+
     public function createUser($email, $password) {
         try {
             if($this->checkIfEmailExist($email)) {
@@ -49,6 +44,35 @@ class Registration {
             echo "Error: " . $e->getMessage();
         }
     }
+
+    public function searchEmail($email) {
+        $sql = "SELECT * FROM `korisnici` WHERE `email` = :email";
+        
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+        $stmt->execute();
+
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        
+        foreach($result as $row) {
+            return $row['email'];
+        }
+    }
+
+    public function searchEmailByWord($email) {
+        $sql = "SELECT * FROM `korisnici` WHERE `email` LIKE :email";
+
+        $stmt = $this->conn->prepare($sql);
+        $email = "%".$email."%";
+        $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+        $stmt->execute();
+
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        
+        $foundWordsInEmail = [];
+        foreach($result as $row) {
+            $foundWordsInEmail[] = $row['email'];
+        }
+        return $foundWordsInEmail;
+    }
 }
-
-
