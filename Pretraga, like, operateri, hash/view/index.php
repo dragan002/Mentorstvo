@@ -39,7 +39,21 @@
 <div class="row justify-content-center mt-3">
         <div class="col-md-6">
           <h3>Search products</h3>
-            <form method="get" action="../control/productControl/productControl.php">
+          <form method="get" action="../control/productControl/productControl.php">
+            <div class="input-group">
+              <input type="text" class="form-control" name="search" placeholder="Search...">
+              <div class="input-group-append">
+                <button type="submit" class="btn btn-outline-secondary">Search</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      
+      <div class="row justify-content-center mt-3">
+        <div class="col-md-6">
+          <h3>Search emails</h3>
+          <form method="get" action="../control/userControl/userControl.php">
                 <div class="input-group">
                     <input type="text" class="form-control" name="search" placeholder="Search...">
                     <div class="input-group-append">
