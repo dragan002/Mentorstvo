@@ -15,7 +15,7 @@ public $weight;
         $this->weight = $weight;
     }
 
-    public function ages($yearOfBirth) {
+    public function ages($yearOfBirth): int {
         return date('Y') - $yearOfBirth;
     }
 
@@ -25,8 +25,4 @@ public $weight;
         return $this->yearOfBirth;
     }
 }
-
-$dragan = new Person('Dragan', 'Vujic', 1995, 184, 85);
-
-echo $dragan->ages($dragan->getYearOfBirth());
 
