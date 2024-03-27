@@ -1,26 +1,20 @@
 <?php
 
-class User implements PasswordValidator {
-    private $email;
-    private $hashedPassword;
+class User {
+    public $email;
+    public $password;
 
-    public function __construct(string $email, string $password ) {
+    public function __construct($email, $password) {
         $this->email = $email;
-        $this->setPassword($password);
+        $this->password = $password;
     }
 
-    public function setEmail(string $email): void {
-        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            throw new InvalidArgumentException("Invalid email address");
-        }
-        $this->email = $email;
-    }
+    public function save() {
+        $db = mysqli_connect('localhost', 'root', '', 'web_shop');
 
-    public function getEmail(string $email): string {
-        return $this->email;
-    }
+        $email = $db->real_escape_string($this->email);
+        $password = $db->real_escape_string($this->password);
 
-    public function setPassword(string $password): void {
-        $this->hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-        }
+        $db->query("INSERT INTO `korisnicii` (email, password) VALUES ('$email', '$password') ");
     }
+}
