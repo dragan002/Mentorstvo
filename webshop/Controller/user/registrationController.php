@@ -1,5 +1,7 @@
 <?php
 
+$user = new App\Model\User\User();
+
 if(isset($_POST['registration'])) {
     $name = $_POST['name'];
     $email = $_POST['email'];

@@ -1,5 +1,7 @@
 <?php
-    include '../../Controller/user/registrationController.php';
+require(__DIR__ . '/../../../vendor/autoload.php');
+
+include '../../Controller/user/registrationController.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
