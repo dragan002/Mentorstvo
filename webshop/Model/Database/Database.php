@@ -1,8 +1,8 @@
 <?php
 
+namespace App\Model\Database; 
 require_once 'credentials.php';
-
-
+use PDO;
 class Database
 {
   private $conn;
