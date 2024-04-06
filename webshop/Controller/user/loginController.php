@@ -2,9 +2,19 @@
 
 $userModel = new App\Model\User\User();
 
-
 $loginInput = $userModel->getLoginInput();
-$userByEmail = $userModel->getUserByEmail($loginInput['email']);
+$userFromDb = $userModel->getUserByEmail($loginInput['email']);
 
-var_dump($userByEmail);
+// Directly retrieve the password if getUserByEmail returns only one user
+$passwordFromDb = isset($userFromDb[0]) ? $userFromDb[0]['password'] : null;
 
+if(!password_verify($loginInput['password'], $passwordFromDb)) {
+    echo 'Incorrect password, try again';
+}
+
+$_SESSION['login_success'] = "YOu are in";
+header('Location: ../../index.php');
+exit();
+
+
+?>

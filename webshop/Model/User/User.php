@@ -49,9 +49,7 @@ class User extends Database {
         if (!isset($_POST['email']) || !isset($_POST['password'])) {
             return null;
         }
-    
-        // Sanitize and return the login input
-        return [
+            return [
             'email' => filter_var($_POST['email'], FILTER_SANITIZE_EMAIL),
             'password' => $_POST['password']
         ];
