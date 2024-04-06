@@ -1,6 +1,6 @@
 <?php
 
-define("DB_SERVER", 'localhost');
-define("DB_USERNAME", 'root');
-define("DB_PASSWORD", '');
-define("DB_DATABASE", 'web_shop');
+// const DB_SERVER = 'localhost';
+// const DB_USERNAME = 'root';
+// const DB_PASSWORD = '';
+// const DB_DATABASE = 'web_shop';
