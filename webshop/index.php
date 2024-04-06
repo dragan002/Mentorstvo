@@ -42,7 +42,6 @@ require_once 'View/includes/header.php';
 
 <?php
 require_once 'View/includes/footer.php';
-
 ?>
 
 

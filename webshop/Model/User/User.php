@@ -26,4 +26,36 @@ class User extends Database {
             die("Error while trying to registrate a user " . $e->getMessage());
         }
     }
+
+    public function getUserByEmail(string $email): ?array {
+        try {
+            $sql = "SELECT * FROM " . self::TABLE_NAME . " WHERE  email=:email";
+            
+            $stmt =  $this->getConnection()->prepare($sql);
+            $stmt->bindValue(':email', $email, PDO::PARAM_STR);
+            $stmt->execute();
+
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            (!$result) ? die("No user found with this email") : '';
+
+            return $result;
+        } catch  (\PDOException $e) {
+            die("Erro while getting the user by email" . $e->getMessage());
+        }
+    }
+
+    public function getLoginInput(): ?array {
+        if (!isset($_POST['email']) || !isset($_POST['password'])) {
+            return null;
+        }
+    
+        // Sanitize and return the login input
+        return [
+            'email' => filter_var($_POST['email'], FILTER_SANITIZE_EMAIL),
+            'password' => $_POST['password']
+        ];
+    }
+    
 }
+// array(2) { ["name"]=> string(0) "" ["password"]=> NULL }

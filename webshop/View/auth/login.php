@@ -1,4 +1,7 @@
-
+<?php
+require(__DIR__ . '/../../../vendor/autoload.php');
+include '../../Controller/user/loginController.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,14 +32,14 @@
                         Login
                     </div>
                     <div class="card-body">
-                        <form>
+                        <form method="POST">
                             <div class="form-group">
                                 <label for="loginEmail">Email</label>
-                                <input type="email" class="form-control" id="loginEmail" placeholder="Enter email">
+                                <input type="email" class="form-control" name="email" id="loginEmail" placeholder="Enter email">
                             </div>
                             <div class="form-group">
                                 <label for="loginPassword">Password</label>
-                                <input type="password" class="form-control" id="loginPassword" placeholder="Password">
+                                <input type="password" class="form-control" name="password" id="loginPassword" placeholder="Password">
                             </div>
                             <button type="submit" name="login" class="btn btn-primary">Login</button>
                         </form>
