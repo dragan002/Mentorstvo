@@ -10,10 +10,17 @@ $products = $items->getAllProduct();
 require_once 'View/includes/header.php';
 ?>
 
-
 <div class="container mt-5">
     <div class="row">
         <div class="col-md-8 offset-md-2">
+            <?php
+                session_start();
+
+                if(isset($_SESSION['success_message'])) {
+                    echo '<div class="alert alert-success" role="alert">' . $_SESSION['success_message'] . '</div>';
+                    unset($_SESSION['success_message']);
+                }
+            ?>
             <div class="list-group">
                 <?php foreach($products as $product) { ?>
                     <div class="list-group-item mb-3 shadow">

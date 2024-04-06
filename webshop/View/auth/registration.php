@@ -1,6 +1,5 @@
 <?php
 require(__DIR__ . '/../../../vendor/autoload.php');
-
 include '../../Controller/user/registrationController.php';
 ?>
 <!DOCTYPE html>
@@ -25,6 +24,7 @@ include '../../Controller/user/registrationController.php';
         </div>
     </nav>
 
+    
     <div class="container mt-5">
         <div class="row">
             <div class="col-md-6 offset-md-3">
@@ -32,6 +32,17 @@ include '../../Controller/user/registrationController.php';
                     <div class="card-header">
                         Registration
                     </div>
+                    
+                    <?php if (!empty($errors)) : ?>
+                        <div class="alert alert-danger" role="alert">
+                            <ul>
+                                <?php foreach ($errors as $error) : ?>
+                                    <li><?php echo $error; ?></li>
+                                <?php endforeach; ?>
+                            </ul>
+                        </div>
+                    <?php endif; ?>
+
                     <div class="card-body">
                         <form method="POST">
                             <div class="form-group">
@@ -59,5 +70,6 @@ include '../../Controller/user/registrationController.php';
     </div>
 
 <?php
+
     require_once '../includes/footer.php';
 ?>

@@ -9,7 +9,7 @@ class User extends Database {
     const  TABLE_NAME = 'users';
     public function registerUser(array $user): bool {
         try {
-            $sql = "INSERT INTO " . self::TABLE_NAME . "('name', 'email', 'password') VALUES (:name, :email, :password)";
+            $sql = "INSERT INTO " . self::TABLE_NAME . "  (`name`, `email`, `password`) VALUES (:name, :email, :password)";
             
             $stmt = $this->getConnection()->prepare($sql);
             
