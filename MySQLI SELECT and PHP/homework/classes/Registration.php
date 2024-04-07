@@ -68,7 +68,7 @@ class Registration extends Database {
         if (!$result) {
             die("Error with inserting data");
         } else {
-            $_SESSION['registration_success'] = true;
+            // $_SESSION['registration_success'] = true;
             return true;
         }
     }

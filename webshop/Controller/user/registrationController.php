@@ -26,11 +26,11 @@ if(isset($_POST['registration'])) {
             'email' => $email, 
             'password' => $hashedPassword
         ]);
+        
         if(!$createdUser) {
             die("Something went wrong while creating your account");
         } 
 
-        session_start();
         $_SESSION['success_message'] = "Registration successful. You can now login.";
         
         header('Location: ../../index.php');

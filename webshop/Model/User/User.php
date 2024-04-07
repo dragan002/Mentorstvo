@@ -27,7 +27,7 @@ class User extends Database {
         }
     }
 
-    public function getUserByEmail(string $email): ?array {
+    public function getUserByEmail($email): ?array {
         try {
             $sql = "SELECT * FROM " . self::TABLE_NAME . " WHERE  email=:email";
             
@@ -37,8 +37,7 @@ class User extends Database {
 
             $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-            (!$result) ? die("No user found with this email") : '';
-
+         
             return $result;
         } catch  (\PDOException $e) {
             die("Erro while getting the user by email" . $e->getMessage());

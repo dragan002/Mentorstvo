@@ -70,6 +70,5 @@ include '../../Controller/user/registrationController.php';
     </div>
 
 <?php
-
     require_once '../includes/footer.php';
 ?>

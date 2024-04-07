@@ -1,30 +1,38 @@
 <?php
-require(__DIR__ . '/../vendor/autoload.php');
+require __DIR__ . '/../vendor/autoload.php';
 
-$database = new App\Model\Database\Database();
+use App\Model\Database\Database;
+use App\Model\Products\Products;
+
+$database = new Database();
 $conn = $database->getConnection();
 
-$productModel = new App\Model\Products\Products();
+$productModel = new Products();
 $products = $productModel->getAllProduct();
 
+// Include header
 require_once 'View/includes/header.php';
 ?>
 
 <div class="container mt-5">
     <div class="row">
         <div class="col-md-8 offset-md-2">
-        <?php 
-            session_start(); 
-            if(isset($_SESSION['success_message'])): 
-        ?>
-            <div class="alert alert-success" role="alert">
-                <?= $_SESSION['success_message'] ?>
-            </div>
-        <?php unset($_SESSION['success_message']); ?>
-        <?php endif; ?>
+            <?php if (isset($_SESSION['success_message'])): ?>
+                <div class="alert alert-success" role="alert">
+                    <?= $_SESSION['success_message'] ?>
+                </div>
+                <?php unset($_SESSION['success_message']); ?>
+            <?php endif; ?>
+
+            <?php if (isset($_SESSION['login-success'])): ?>
+                <div class="alert alert-success" role="alert">
+                    <?= $_SESSION['login-success'] ?>
+                </div>
+                <?php unset($_SESSION['login-success']); ?>
+            <?php endif; ?>
 
             <div class="list-group">
-                <?php foreach($products as $product): ?>
+                <?php foreach ($products as $product): ?>
                     <div class="list-group-item mb-3 shadow">
                         <h3 class="mb-1"><?= $product['name']; ?></h3>
                         <p class="mb-1"><?= $product['description']; ?></p>
@@ -39,10 +47,7 @@ require_once 'View/includes/header.php';
     </div>
 </div>
 
-
 <?php
+// Include footer
 require_once 'View/includes/footer.php';
 ?>
-
-
-

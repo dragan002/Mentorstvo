@@ -1,20 +1,19 @@
 <?php
-
 $userModel = new App\Model\User\User();
-
 $loginInput = $userModel->getLoginInput();
-$userFromDb = $userModel->getUserByEmail($loginInput['email']);
 
-// Directly retrieve the password if getUserByEmail returns only one user
-$passwordFromDb = isset($userFromDb[0]) ? $userFromDb[0]['password'] : null;
-
-if(!password_verify($loginInput['password'], $passwordFromDb)) {
-    echo 'Incorrect password, try again';
+if (isset($_POST['login'])) {
+    $userFromDb = $userModel->getUserByEmail($loginInput['email']);
+    
+    if ($userFromDb && password_verify($loginInput['password'], $userFromDb[0]['password'])) {
+        $_SESSION['login-success'] = "You are logged in";
+        if ($userFromDb[0]['role'] == 'user') {
+            header('Location: ../../index.php');
+            exit();
+        } 
+            header('Location: ../../View/adminPanel/adminIndex.php');
+            exit(); 
+    } 
+    $_SESSION['login-error'] = "Incorrect email or password";
 }
-
-$_SESSION['login_success'] = "YOu are in";
-header('Location: ../../index.php');
-exit();
-
-
 ?>

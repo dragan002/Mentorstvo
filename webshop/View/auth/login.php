@@ -33,6 +33,14 @@ include '../../Controller/user/loginController.php';
                     </div>
                     <div class="card-body">
                         <form method="POST">
+                            <?php 
+                                if(isset($_SESSION['login-error'])): 
+                            ?>
+                                <div class="alert alert-danger" role="alert">
+                                    <?= $_SESSION['login-error'] ?>
+                                    <?php unset($_SESSION['login-error']); ?>
+                                </div>
+                            <?php endif; ?>
                             <div class="form-group">
                                 <label for="loginEmail">Email</label>
                                 <input type="email" class="form-control" name="email" id="loginEmail" placeholder="Enter email">

@@ -35,4 +35,17 @@ class Products extends Database {
             die("Failed to retrieve data from database: " . $e->getMessage());
         }
     }
+
+    public function deleteProduct(int $productId): bool{
+        $sql = "DELETE  FROM ".self::TABLE_NAME." WHERE id=:productId";
+        
+        $stmt = $this->getConnection() ->prepare($sql);
+        $stmt->bindParam(':productId', $productId, PDO::PARAM_INT);
+        if (!$stmt->execute()) {
+            echo "\nPDO::errorInfo():\n";
+            print_r($stmt->errorInfo());
+            return false;
+        };
+        return true;
+    }
 }
