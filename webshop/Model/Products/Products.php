@@ -37,7 +37,7 @@ class Products extends Database {
     }
 
     public function deleteProduct(int $productId): bool{
-        $sql = "DELETE  FROM ".self::TABLE_NAME." WHERE id=:productId";
+        $sql = "DELETE  FROM ". self::TABLE_NAME . " WHERE id=:productId";
         
         $stmt = $this->getConnection() ->prepare($sql);
         $stmt->bindParam(':productId', $productId, PDO::PARAM_INT);
