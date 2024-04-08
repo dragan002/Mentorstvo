@@ -76,4 +76,43 @@ class Products extends Database {
             return false;
         }
     }
+
+    public function searchProduct(string $search): array {
+        try {
+            $sql = "SELECT * FROM " . self::TABLE_NAME . " WHERE id = :id OR  name LIKE :name ORDER BY name ASC";
+            $stmt = $this->getConnection()->prepare($sql);
+
+            $searchTerms = "%" . $search . "%";
+
+            $stmt->bindParam(':id', $search, PDO::PARAM_INT);
+            $stmt->bindParam(':name', $searchTerms, PDO::PARAM_STR);
+
+            $stmt->execute();
+    
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch  (PDOException $e) {
+            throw new Exception("Database error: " + $e->getMessage(), 1);
+        }
+    }
+    
+    public function addProduct(array $product) :bool {
+        try {
+            $sql = "INSERT INTO " . self::TABLE_NAME . " (name, description, price, quantity) VALUES (:name, :description, :price, :quantity)";
+
+            $stmt = $this->getConnection()->prepare($sql);
+
+            $stmt->bindParam(':name', $product['name'], PDO::PARAM_STR);
+            $stmt->bindParam(':description', $product['description'], PDO::PARAM_STR);
+            $stmt->bindParam(':price', $product['price'], PDO::PARAM_INT);
+            $stmt->bindParam(':quantity', $product['quantity'], PDO::PARAM_INT);
+
+            if(!$stmt->execute()) {
+                die('Failed to insert new product');
+            }
+            return true;
+        }  catch (PDOException $e) {
+            echo 'Error!: ' . $e->getMessage() . '<br/>';
+            return false;
+        }
+    }
 }
