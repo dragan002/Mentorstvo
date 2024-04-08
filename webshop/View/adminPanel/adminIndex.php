@@ -7,17 +7,9 @@ use App\Model\Products\Products;
 $productModel = new Products();
 $products = $productModel->getAllProduct();
 
+require_once('../includes/adminHeader.php');
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard</title>
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-</head>
-<body>
+
     <!-- Admin Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="#">Admin Dashboard</a>
@@ -54,7 +46,7 @@ $products = $productModel->getAllProduct();
                         <p class="mb-1">Price: <?= $product['price']; ?></p>
                         <p class="mb-1"><?= ($product['quantity'] == 0) ? "Out of Stock" : "In Stock"; ?></p>
                         <!-- Update button -->
-                        <a href="update_product.php?id=<?= $product['id']; ?>" class="btn btn-primary">Update</a>
+                        <a href="productPanel/update.php?id=<?= $product['id']; ?>" class="btn btn-primary">Update</a>
                         <!-- Delete button -->
                         <a href="../../Controller/product/delete.php?id=<?= $product['id']; ?>" class="btn btn-danger">Delete</a>
                     </div>

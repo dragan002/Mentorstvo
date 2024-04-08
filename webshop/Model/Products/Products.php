@@ -22,7 +22,7 @@ class Products extends Database {
         }
     }
 
-    public function getProductById(int $id): ?array {
+    public function getProductById($id): ?array {
         try {
             $sql = "SELECT * FROM " . self::TABLE_NAME . " WHERE id = :id";
             $stmt = $this->getConnection() -> prepare($sql);
@@ -47,5 +47,33 @@ class Products extends Database {
             return false;
         };
         return true;
+    }
+
+    public function updateProduct(array $product): bool {
+        try {
+            $sql = "UPDATE " . self::TABLE_NAME . " SET
+                name = :name,
+                description = :description,
+                price = :price,
+                quantity = :quantity
+                WHERE id = :id";
+    
+            $stmt = $this->getConnection()->prepare($sql);
+    
+            $stmt->bindParam(':name', $product['name'], PDO::PARAM_STR);
+            $stmt->bindParam(':description', $product['description'], PDO::PARAM_STR);
+            $stmt->bindParam(':price', $product['price'], PDO::PARAM_INT);
+            $stmt->bindParam(':quantity', $product['quantity'], PDO::PARAM_INT);
+            $stmt->bindParam(':id', $product['id'], PDO::PARAM_INT);
+    
+            if (!$stmt->execute()) {
+                return false; 
+            } 
+    
+            return true;
+        } catch (PDOException $e) {
+            error_log("Error during updating: " . $e->getMessage());
+            return false;
+        }
     }
 }
