@@ -25,7 +25,7 @@ require_once('../../includes/adminHeader.php');
                         </div>
                         <div class="form-group">
                             <label for="description">Product Description</label>
-                            <textarea class="form-control" id="description" name="description" required> </textarea>
+                            <textarea class="form-control" id="description" name="description" required></textarea>
                         </div>
                         <div class="form-group">
                             <label for="price">Product Price</label>
