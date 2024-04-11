@@ -1,3 +1,8 @@
+<?php 
+if(session_status()  == PHP_SESSION_NONE) {
+    session_start();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +18,8 @@
         <a class="navbar-brand" href="#">Mobilix</a>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
-                <?php if(isset($_SESSION['login-success'])): ?>
+                <?php
+                 if(isset($_SESSION['login-success'])): ?>
                     <li class="nav-item">
                         <a class="nav-link" href="Controller/user/logoutController.php">Logout</a>
                     </li>

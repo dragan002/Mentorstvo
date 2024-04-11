@@ -10,13 +10,7 @@ $conn = $database->getConnection();
 $productModel = new Products();
 $products = $productModel->getAllProduct();
 
-
 require_once 'View/includes/header.php';
-
-if(session_status()  == PHP_SESSION_NONE) {
-    session_start();
-}
-
 ?>
 
 <div class="container mt-5">    
@@ -44,18 +38,19 @@ if(session_status()  == PHP_SESSION_NONE) {
                 <div class="alert alert-success" role="alert">
                     <?= $_SESSION['login-success'] ?>
                 </div>
-                <?php unset($_SESSION['login-success']); ?>
-            <?php endif; ?>
-
-            <div class="list-group">
-                <?php foreach ($products as $product): ?>
-                    <div class="list-group-item mb-3 shadow">
-                        <h3 class="mb-1"><?= $product['name']; ?></h3>
-                        <p class="mb-1"><?= $product['description']; ?></p>
-                        <p class="mb-1">Price: <?= $product['price']; ?></p>
-                        <p class="mb-1"><?= ($product['quantity'] == 0) ? "Out of Stock" : "In Stock"; ?></p>
-                        <a href="View/product/details.php?id=<?= $product['id']; ?>" class="btn btn-primary">Details</a>
-                        <button class="btn btn-success" onclick="addToCart(<?= $product['id']; ?>)">Add to Cart</button>
+                <?php endif; ?>
+                
+                <div class="list-group">
+                    <?php foreach ($products as $product): ?>
+                        <div class="list-group-item mb-3 shadow">
+                            <h3 class="mb-1"><?= $product['name']; ?></h3>
+                            <p class="mb-1"><?= $product['description']; ?></p>
+                            <p class="mb-1">Price: <?= $product['price']; ?></p>
+                            <p class="mb-1"><?= ($product['quantity'] == 0) ? "Out of Stock" : "In Stock"; ?></p>
+                            <a href="View/product/details.php?id=<?= $product['id']; ?>" class="btn btn-primary">Details</a>
+                            <?php if(isset($_SESSION['login-success'])) :?>
+                                <button class="btn btn-success" onclick="addToCart(<?= $product['id']; ?>)">Add to Cart</button>
+                                <?php endif; ?>
                     </div>
                 <?php endforeach; ?>
             </div>
