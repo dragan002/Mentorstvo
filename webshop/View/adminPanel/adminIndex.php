@@ -8,6 +8,10 @@ $productModel = new Products();
 $products = $productModel->getAllProduct();
 
 require_once('../includes/adminHeader.php');
+
+if(session_status()  == PHP_SESSION_NONE) {
+    session_start();
+}
 ?>
 
     <!-- Admin Navbar -->
@@ -21,18 +25,18 @@ require_once('../includes/adminHeader.php');
                 <li class="nav-item">
                     <a class="nav-link" href="#">Products</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../../Controller/user/logoutController.php">Logout</a>
+                </li>
             </ul>
         </div>
     </nav>
 
-    <?php 
-    session_start();
-        if(isset($_SESSION['delete-success'])): 
-    ?>
-        <div class="alert alert-danger" role="alert">
-            <?= $_SESSION['delete-success'] ?>
-            <?php unset($_SESSION['delete-success']); ?>
-        </div>
+    <?php if (isset($_SESSION['login-success'])): ?>
+                <div class="alert alert-success" role="alert">
+                    <?= $_SESSION['login-success'] ?>
+                </div>
+                <?php unset($_SESSION['login-success']); ?>
     <?php endif; ?>
 
 <div class="container mt-5">

@@ -10,7 +10,13 @@ $conn = $database->getConnection();
 $productModel = new Products();
 $products = $productModel->getAllProduct();
 
+
 require_once 'View/includes/header.php';
+
+if(session_status()  == PHP_SESSION_NONE) {
+    session_start();
+}
+
 ?>
 
 <div class="container mt-5">    
