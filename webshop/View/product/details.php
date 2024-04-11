@@ -43,9 +43,16 @@ if (!$productById) {
                             <p class="card-text">Price: $<?= $product['price']; ?></p>
                             <p class="card-text">Quantity: <?= $product['quantity']; ?></p>
                             <?php if(isset($_SESSION['login-success'])) :?>
-                                <button class="btn btn-success" onclick="addToCart(<?= $product['id']; ?>)">Add to Cart</button>
+                            <form action="../../Controller/cart/cartController.php" method="POST" class="form-inline">
+                                <div class="form-group mr-2">
+                                    <input type="number" class="form-control" name="quantity" placeholder="Type a quantity">
+                                    <input type="hidden" class="form-control" name="product_id" value=<?= $product['id']?> placeholder="Type a quantity">
+                                </div>
+                                <button type="submit" class="btn btn-success" onclick="addToCart(<?= $product['id']; ?>)">Add to Cart</button>
+                            </form>
                             <?php else : ?>
-                                <p class="text-muted">Please <a href="../../View/auth/login.php">log in</a> to continue shopping.</p>
+                                <p>Please log in to continue with shopping</p>
+                                <a href="../auth/login.php" class="btn btn-primary">Log in</a>
                             <?php endif; ?>
                         <?php endforeach; ?>
                     </div>
