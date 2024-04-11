@@ -1,3 +1,9 @@
+<?php
+if(session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,6 +16,7 @@
     <div class="container">
         <div class="row justify-content-center mt-5">
             <div class="col-md-6">
+                <?php if(!isset($_SESSION['name'])) :?>
                 <form action="logic.php" method="POST" class="shadow p-4 bg-light">
                     <div class="form-group">
                         <label for="name">Name</label>
@@ -17,6 +24,12 @@
                     </div>
                     <button type="submit" class="btn btn-primary">Remember Me</button>
                 </form>
+                <?php else : ?>
+                    <h3 class='text-center'>Welcome back <?= $_SESSION['name'];?></h3>
+                    <form action="deleteSession.php" method="POST">
+                        <button type="submit" class="btn btn-danger">Logout</button>
+                    </form>
+                <?php endif; ?>
             </div>
         </div>
     </div>

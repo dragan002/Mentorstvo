@@ -6,8 +6,11 @@ if(!isset($_POST['name']) || empty($_POST['name'])) {
 
 $name = htmlspecialchars(strip_tags($_POST['name'])); // strip tags, used just for improving skills
 
+if(session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 
-$_SESSION['userName'] = $name;
+$_SESSION['name'] = $name;
 
-header('Location: view.php');
+header('Location: index.php');
 exit();

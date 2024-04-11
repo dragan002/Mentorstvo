@@ -3,4 +3,4 @@ if(session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-echo $_SESSION['userName'];
+echo $_SESSION['name'];
