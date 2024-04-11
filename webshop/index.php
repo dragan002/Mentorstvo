@@ -38,19 +38,24 @@ require_once 'View/includes/header.php';
                 <div class="alert alert-success" role="alert">
                     <?= $_SESSION['login-success'] ?>
                 </div>
-                <?php endif; ?>
+            <?php endif; ?>
                 
-                <div class="list-group">
-                    <?php foreach ($products as $product): ?>
-                        <div class="list-group-item mb-3 shadow">
-                            <h3 class="mb-1"><?= $product['name']; ?></h3>
-                            <p class="mb-1"><?= $product['description']; ?></p>
-                            <p class="mb-1">Price: <?= $product['price']; ?></p>
-                            <p class="mb-1"><?= ($product['quantity'] == 0) ? "Out of Stock" : "In Stock"; ?></p>
+            <div class="list-group">
+                <?php foreach ($products as $product): ?>
+                    <div class="list-group-item mb-3 shadow">
+                        <h3 class="mb-1"><?= $product['name']; ?></h3>
+                        <p class="mb-1"><?= $product['description']; ?></p>
+                        <p class="mb-1">Price: <?= $product['price']; ?></p>
+                        <p class="mb-1"><?= ($product['quantity'] == 0) ? "Out of Stock" : "In Stock"; ?></p>
+                        <div class="d-flex justify-content-between align-items-center">
                             <a href="View/product/details.php?id=<?= $product['id']; ?>" class="btn btn-primary">Details</a>
                             <?php if(isset($_SESSION['login-success'])) :?>
-                                <button class="btn btn-success" onclick="addToCart(<?= $product['id']; ?>)">Add to Cart</button>
-                                <?php endif; ?>
+                                <form action="Controller/cart/addController.php" method="POST" class="form-inline">
+                                    <input type="hidden" name="product_id" value="<?= $product['id']; ?>">
+                                    <button type="submit" class="btn btn-success" onclick="addToCart(<?= $product['id']; ?>)">Add to Cart</button>
+                                </form>
+                            <?php endif; ?>
+                        </div>
                     </div>
                 <?php endforeach; ?>
             </div>

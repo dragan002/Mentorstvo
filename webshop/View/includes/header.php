@@ -31,9 +31,11 @@ if(session_status()  == PHP_SESSION_NONE) {
                         <a class="nav-link" href="View/auth/registration.php">Registration</a>
                     </li>
                 <?php endif; ?>
-                <li class="nav-item">
-                    <a class="nav-link" href="View/cart/cart.php">Cart</a>
-                </li>
+                <?php if(isset($_SESSION['login-success'])): ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="View/cart/cart.php">Cart</a>
+                    </li>
+                <?php endif;?>
             </ul>
         </div>
     </nav>

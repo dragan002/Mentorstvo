@@ -43,7 +43,7 @@ if (!$productById) {
                             <p class="card-text">Price: $<?= $product['price']; ?></p>
                             <p class="card-text">Quantity: <?= $product['quantity']; ?></p>
                             <?php if(isset($_SESSION['login-success'])) :?>
-                            <form action="../../Controller/cart/cartController.php" method="POST" class="form-inline">
+                            <form action="../../Controller/cart/addController.php" method="POST" class="form-inline">
                                 <div class="form-group mr-2">
                                     <input type="number" class="form-control" name="quantity" placeholder="Type a quantity">
                                     <input type="hidden" class="form-control" name="product_id" value=<?= $product['id']?> placeholder="Type a quantity">
