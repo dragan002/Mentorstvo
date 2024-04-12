@@ -15,6 +15,6 @@ class User {
         $email = $db->real_escape_string($this->email);
         $password = $db->real_escape_string($this->password);
 
-        $db->query("INSERT INTO `korisnicii` (email, password) VALUES ('$email', '$password') ");
+        $db->query("INSERT INTO `users` (email, password) VALUES ('$email', '$password') ");
     }
 }

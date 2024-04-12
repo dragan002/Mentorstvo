@@ -1,7 +1,7 @@
 <?php
 
-require_once('models/User.php');
-require_once('models/Database.php');
+require_once 'models/User.php';
+require_once 'models/Database.php';
 
 $draganUser = new User('dragan@gmail.com', '23242');
 $draganUser->save();
