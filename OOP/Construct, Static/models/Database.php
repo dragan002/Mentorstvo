@@ -23,5 +23,7 @@ class Database {
 }
 
 $conn = new Database();
-var_dump($conn);
+if($conn) {
+    echo "you are in";
+}
 ?>
