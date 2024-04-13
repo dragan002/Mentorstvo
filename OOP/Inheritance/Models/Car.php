@@ -1,14 +1,9 @@
 <?php
+require_once 'Vehicle.php';
 
+class Car extends Vehicle {
 
-class Car {
-    public $brand;
-    public $model;
-    public $color;
+    public $numberOfDoors;
+    public $sizeOfStorage;
 
-    public function __construct($brand, $model, $color) {
-        $this->brand = $brand;
-        $this->model = $model;
-        $this->color = $color;
-    }
 }

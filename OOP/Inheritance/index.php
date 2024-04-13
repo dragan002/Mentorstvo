@@ -1,12 +1,20 @@
 <?php
 require 'Models/Car.php';
-require 'Models/Vehicle.php';
 
-$yugo = new Car('Yugo', 'Koral 45', 'Blue');
-$bmw = new Car('Bmw', 'X5', "Black");
-$audi = new Car('Audi','A8L','White');
+// $yugo = new Car('Yugo', 'Koral 45', 'Blue');
+// $bmw = new Car('Bmw', 'X5', "Black");
+// $audi = new Car('Audi','A8L','White');
+// $audi->height = 255;
+$yugo = new Car();
+$yugo->brand = "Yugo";
+$yugo->model = "Koral";
+$yugo->color = "BLUE";
+$yugo->height = 255;
 
-var_dump($yugo);
+print_r($yugo);
+
+
+
 
 ?>
 <!DOCTYPE html>

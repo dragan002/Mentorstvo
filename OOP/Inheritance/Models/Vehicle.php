@@ -5,9 +5,8 @@ class Vehicle {
     public $height;
     public $type;
 
-    public function __construct($weight, $height, $type) {
-        $this->weight = $weight;
-        $this->height = $height;
-        $this->type = $type;
-    }
+    public $brand;
+    public $model;
+    public $color;
+
 }
