@@ -1,6 +1,7 @@
 <?php
 
-class Cars {
+
+class Car {
     public $brand;
     public $model;
     public $color;
