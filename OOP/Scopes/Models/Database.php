@@ -1,8 +1,6 @@
 <?php
 
-
 class Database {
-    private static $instance = null;
     private $conn;
     const DB_SERVER = 'localhost';
     const DB_USERNAME =  'root';
@@ -19,19 +17,21 @@ class Database {
     }
 
     public static function getInstance() {
-        if (!self::$instance) {
-            self::$instance = new Database();
+        static $instance = null;
+        if ($instance === null) {
+            $instance = new self();
         }
-        return self::$instance;
+        return $instance;
     }
 
     public function getConnection() {
         return $this->conn;
     }
 }
+
 $database = Database::getInstance();
 $conn = $database->getConnection();
 
 if($conn) {
-    echo 'in';
+    echo 'Connected!';
 }
