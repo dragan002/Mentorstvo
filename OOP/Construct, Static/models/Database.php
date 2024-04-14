@@ -1,5 +1,4 @@
 <?php
-require_once 'dbCredentials.php';
 
 class Database {
     private $conn;
