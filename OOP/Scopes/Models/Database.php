@@ -29,9 +29,3 @@ class Database {
     }
 }
 
-$database = Database::getInstance();
-$conn = $database->getConnection();
-
-if($conn) {
-    echo 'Connected!';
-}
