@@ -1,7 +1,8 @@
 <?php
 require_once('Database.php');
+require_once('Validator.php');
 
-class User {
+class User extends Database {
     private $db;
 
     private $email;
@@ -30,12 +31,16 @@ class User {
 
     public function register(string $email, string $password): string {
 
-        if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        if(!Validator::isValidEmail(trim($email))) {
             throw new InvalidArgumentException('Invalid email address format!');
         }
 
-        if(strlen($password) < 8 ) {
+        if(!Validator::isValidPassword(mb_strlen($password))) {
             throw new InvalidArgumentException('Password cannot be less then 8 characters');
+        }
+
+        if (Validator::isEmailExist($email)) {
+            throw new RuntimeException('Email already exists');
         }
 
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
